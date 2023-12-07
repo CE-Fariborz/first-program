@@ -8,7 +8,7 @@ int address[50]={-1};
 int search_cs(string, string, bool);
 int search(string, string, bool);
 void address_print(int);
-char* replace(string, string, int);
+void replace(string, string, int);
 
 int main(void){
 	string goal;
@@ -49,7 +49,7 @@ int main(void){
 		return 1;
 	}
 	else
-		cout<<replace(text, goal, tedad);
+		replace(text, goal, tedad);
 	return 1;
 }
 
@@ -70,7 +70,6 @@ int search_cs(string text, string goal, bool sep){
 				i--;
 				break;
 			}
-			i--;
 			if(address[x]!=-1)
 				if(sep)
 				{
@@ -106,7 +105,6 @@ int search(string text, string goal, bool sep){
 				address[x]=-1;
 				break;
 			}
-			i--;
 			if(address[x]!=-1)
 				if(sep)
 				{
@@ -133,7 +131,7 @@ void address_print(int tedad){
 	}
 }
 
-char* replace(string text, string goal, int tedad){
+void replace(string text, string goal, int tedad){
 	int s_text=text.size();
 	int s_goal=goal.length();
 	string n_goal;
@@ -157,6 +155,5 @@ char* replace(string text, string goal, int tedad){
 		}
 		n_text[j]=text[i];
 	}
-	return n_text;
-}
+} 
 
