@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -66,8 +66,8 @@ int search_cs(string text, string goal, bool sep){
 			{
 				if(text[i]==goal[j])
 					continue;
+				i=address[x];
 				address[x]=-1;
-				i--;
 				break;
 			}
 			if(address[x]!=-1)
@@ -127,7 +127,7 @@ void address_print(int tedad){
 	
 	for(int i=0;i<tedad;i++)
 	{
-		cout<<"your '"<<i+1<<"' word is the '"<<address[i]+1<<"th' char in text\n";
+		cout<<"the '"<<i+1<<"th' word is the '"<<address[i]+1<<"th' char in text\n";
 	}
 }
 
@@ -138,22 +138,24 @@ void replace(string text, string goal, int tedad){
 	int s_n_goal;
 	cout<<"Enter your new word : ";
 	cin>>n_goal;
-	s_n_goal=goal.size();
+	s_n_goal=n_goal.size();
 	int s_n_text=(s_n_goal-s_goal)*tedad+s_text;
-	char n_text[s_n_text];
+	string n_text[s_n_text];
 	int x=0;
-	for(int i,j=0;i<s_n_text;i++,j++)
+	int i=0;
+	for(int j=0;i<s_n_text;i++,j++)
 	{
-		if(i==address[x])
+		if(j==address[x])
 		{
-			for(int k=0;k<s_n_goal;j++,k++)
+			for(int k=0;k<s_n_goal;i++,k++)
 			{
-				n_text[j]=n_goal[k];
+				n_text[i]=n_goal[k];
+				cout<<n_text[i];
 			}
 			x++;
-			i+=s_goal;
+			j+=s_goal;
 		}
-		n_text[j]=text[i];
+		n_text[i]=text[j];
+		cout<<n_text[i];
 	}
-} 
-
+}
